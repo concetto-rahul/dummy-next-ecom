@@ -1,3 +1,5 @@
+import ProductFilters from "@/components/home/products/product-filters";
+import ProductShortBy from "@/components/home/products/product-short-by";
 import ProductsItem from "@/components/home/products/products-item";
 import Pagination from "@/components/pagination";
 import { getDictionary } from "@/dictionaries";
@@ -26,27 +28,36 @@ const fetchProductList = async (
 
 export default async function Collections({
   params: { lang, collection_slug },
-  searchParams: { page },
+  searchParams,
 }: Props) {
   const limit = 2;
-  const pageNumber = page ? Number(page) : 0;
+  const pageNumber = searchParams?.page ? Number(searchParams.page) : 0;
   const dictionary = await getDictionary(lang);
   const products = await fetchProductList(collection_slug, limit, pageNumber);
+
   return (
     <div className="container-fluid">
-      <h1>Results {collection_slug}</h1>
       <div className="row">
-        <div className="col-4"></div>
+        <div className="col-4">
+          <ProductFilters />
+        </div>
         <div className="col-8">
           <div className="row">
             {products.total > 0 ? (
               <>
+                <div className="d-flex justify-content-between mb-4">
+                  <h6>
+                    Results 1-5 of over {products?.total || 0} {collection_slug}{" "}
+                    {pageNumber}
+                  </h6>
+                  <ProductShortBy />
+                </div>
                 {products.products.map((val: Product) => (
                   <div key={`dealp-${val.id}`} className="col-md-3">
                     <ProductsItem data={val} />
                   </div>
                 ))}
-                <Pagination />
+                <Pagination total={products.total} limit={limit} />
               </>
             ) : (
               <div className="col-12">

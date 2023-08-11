@@ -7,7 +7,16 @@ type props = {
   data: Product;
 };
 export default function ProductsItem({
-  data: { id, title, price, discountPercentage, rating, thumbnail, deal },
+  data: {
+    id,
+    title,
+    price,
+    discountPercentage,
+    rating,
+    thumbnail,
+    deal,
+    category,
+  },
 }: props) {
   const ratingRound = Math.round(rating);
   return (
@@ -16,7 +25,7 @@ export default function ProductsItem({
       <Image src={thumbnail} fill className="image" alt={title} priority />
       <div className="card-body">
         <h2>
-          <Link href={`/products/${id}`}>{title}</Link>
+          <Link href={`/collections/${category}/products//${id}`}>{title}</Link>
         </h2>
         <div className="rating">
           <Image
