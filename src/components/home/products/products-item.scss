@@ -1,0 +1,117 @@
+.prducts-item-box {
+  background-color: #ffffff;
+  border: 2px solid #f5f5fc;
+  border-radius: 20px;
+  position: relative;
+  margin-right: 24px;
+
+  .deal-label {
+    position: absolute;
+    top: 44%;
+    left: -20%;
+    transform: matrix(0, -1, 1, 0, 0, 0);
+    background: #292d32;
+    border-radius: 0px 0px 9px 0px;
+    z-index: 1;
+    padding: 6px 10px;
+
+    text-align: left;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+  .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+    border-radius: 20px 20px 0 0;
+  }
+
+  h2 {
+    a {
+      width: 100%;
+      text-align: left;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0px;
+      color: #292d32;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  a {
+    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: #ff7900;
+  }
+
+  .rating {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 12px;
+    p {
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0px;
+      color: #a4a4b8;
+      margin: 0;
+    }
+  }
+
+  .price-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .price {
+      display: flex;
+      align-items: center;
+      span:nth-child(1) {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0px;
+        font-weight: 600;
+        color: #292d32;
+      }
+      span:nth-child(2) {
+        font-size: 30px;
+        line-height: 24px;
+        font-weight: 600;
+        letter-spacing: 0px;
+        color: #292d32;
+      }
+      span:nth-child(3) {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: normal;
+        letter-spacing: 0px;
+        color: #292d32;
+        text-decoration: line-through;
+        margin-left: 8px;
+      }
+    }
+
+    .discount {
+      width: 54px;
+      height: 54px;
+      text-align: center;
+      font-size: 16px;
+      color: #ffffff;
+      background: url("/images/svg/blue-discount-polygon.svg") no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

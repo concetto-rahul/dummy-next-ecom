@@ -1,0 +1,33 @@
+.home-collection-section {
+  .collection-box-container {
+    width: 168px;
+    height: auto;
+    border: none;
+    margin-right: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .image {
+      object-fit: contain;
+      width: 100% !important;
+      position: relative !important;
+      height: unset !important;
+      border-radius: 50%;
+    }
+    .title {
+      font-size: 18px;
+      line-height: 24px;
+      color: #292d32;
+      text-align: center;
+      font-weight: normal;
+
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

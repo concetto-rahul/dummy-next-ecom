@@ -1,0 +1,76 @@
+.box-container {
+  width: 200px;
+  height: 320px;
+  border: 2px solid #f5f5fc;
+  border-radius: 20px;
+  margin-right: 24px;
+
+  .image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
+  .discount-text {
+    font-size: 14px;
+    line-height: 17px;
+    color: #292d32;
+    margin-bottom: 0.5rem;
+  }
+  .discount-title {
+    font-size: 18px;
+    line-height: 24px;
+    color: #292d32;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.box-round-container {
+  width: 168px;
+  height: auto;
+  border: none;
+  margin-right: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .image-box {
+    background-color: #f5f5fc;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    .image {
+      object-fit: contain;
+      width: 100% !important;
+      position: relative !important;
+      height: unset !important;
+      border-radius: 50%;
+    }
+  }
+
+  .discount-text {
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    text-align: center;
+    font-weight: normal;
+  }
+  .discount-title {
+    font-size: 18px;
+    line-height: 24px;
+    color: #292d32;
+    text-align: center;
+    font-weight: normal;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
