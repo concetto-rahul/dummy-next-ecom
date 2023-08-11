@@ -1,4 +1,5 @@
 import ProductsItem from "@/components/home/products/products-item";
+import Pagination from "@/components/pagination";
 import { getDictionary } from "@/dictionaries";
 import { Locale } from "@/i18n-config";
 import { Product } from "@/types/products";
@@ -45,6 +46,7 @@ export default async function Collections({
                     <ProductsItem data={val} />
                   </div>
                 ))}
+                <Pagination />
               </>
             ) : (
               <div className="col-12">
