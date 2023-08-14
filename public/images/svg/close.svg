@@ -1,0 +1,17 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 321 321" width="321" height="321">
+	<title>close-svg</title>
+	<style>
+		.s0 { fill: #000000 } 
+	</style>
+	<filter id="f0">
+		<feFlood flood-color="#ffffff" flood-opacity="1" />
+		<feBlend mode="normal" in2="SourceGraphic"/>
+		<feComposite in2="SourceAlpha" operator="in" />
+	</filter>
+	<g id="Layer" filter="url(#f0)">
+		<g id="close_1_">
+			<path id="Layer" class="s0" d="m30.4 318.6c-7.9 0.4-15.6-2.2-21.6-7.3-11.7-11.8-11.7-31 0-42.8l257.8-257.8c12.3-11.5 31.5-10.9 43 1.4 10.3 11.1 10.9 28.1 1.4 39.9l-259.4 259.3c-5.8 5.1-13.5 7.7-21.2 7.3z"/>
+			<path id="Layer" class="s0" d="m287.9 318.6c-8-0.1-15.6-3.2-21.3-8.8l-257.8-257.8c-10.9-12.8-9.4-31.9 3.3-42.9 11.4-9.7 28.2-9.7 39.5 0l259.4 257.9c12.2 11.4 12.9 30.6 1.4 42.9q-0.7 0.7-1.4 1.4c-6.4 5.5-14.7 8.2-23.1 7.3z"/>
+		</g>
+	</g>
+</svg>

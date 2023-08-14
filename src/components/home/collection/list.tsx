@@ -41,7 +41,7 @@ const collections = [
 ];
 export default function CollectionList() {
   return (
-    <section className="container my-5 home-collection-section">
+    <section className="container home-collection-section">
       <div className="row">
         {collections.map((val) => (
           <div className="col-2" key={`Collection${val.id}`}>

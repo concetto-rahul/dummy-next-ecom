@@ -1,18 +1,17 @@
-import styles from "./page.module.scss";
+import Link from "next/link";
+import Image from "next/image";
+import { Suspense } from "react";
 import { getDictionary } from "@/dictionaries";
 import { Locale } from "@/i18n-config";
+import CollectionList from "@/components/home/collection/list";
 import HomeBanner from "@/components/home/banner";
-import Link from "next/link";
 import DealsList from "@/components/home/deals/list";
-import Image from "next/image";
-import { DealTimer } from "@/components/home/deals/deal-timer";
+import TrendingList from "@/components/home/deals/trending-list";
 import WeeklyDealsList from "@/components/home/deals/weekly-deals-list";
 import SliderProductList from "@/components/home/products/slider-product-list";
-import { Suspense } from "react";
 import SliderProductListSkeleton from "@/components/home/products/slider-product-list-skeleton";
 import SubscribeNewsletters from "@/components/home/subscribe-newsletters";
 import BlogList from "@/components/home/blog/list";
-import CollectionList from "@/components/home/collection/list";
 
 type Props = {
   params: { lang: Locale };
@@ -200,12 +199,24 @@ const fetchProductList = async (category: string) => {
 
 async function HomeDecorationData() {
   const homeDecorationData = await fetchProductList("furniture");
-  return <SliderProductList list={homeDecorationData?.products || []} />;
+  return (
+    <SliderProductList
+      title="Garden & DIY"
+      url="/collections/home-decoration"
+      list={homeDecorationData?.products || []}
+    />
+  );
 }
 
 async function ElectronicsData() {
   const electronicsData = await fetchProductList("smartphones");
-  return <SliderProductList list={electronicsData?.products || []} />;
+  return (
+    <SliderProductList
+      title="Electronics"
+      url="/collections/electronics"
+      list={electronicsData?.products || []}
+    />
+  );
 }
 
 export default async function Home({ params: { lang } }: Props) {
@@ -215,85 +226,18 @@ export default async function Home({ params: { lang } }: Props) {
     <div>
       <CollectionList />
       <HomeBanner />
-      <section className="container my-5">
-        <div className="d-flex justify-content-between align-items-center mb-3">
-          <div className="d-flex">
-            <h2 className="box-header-heading mr-2">Deals of the Day</h2>
-            <DealTimer endDate={"2023-08-18 11:58:00"} />
-          </div>
-          <Link href="/deals" className="box-header-link">
-            <span>View All Deals</span>
-            <Image
-              src="/images/svg/dark-line-arrow.svg"
-              alt="view all deals"
-              width={16}
-              height={16}
-              className="pr-2"
-            />
-          </Link>
-        </div>
-        <DealsList pageType="home" list={homeData.deals} />
-      </section>
-      <section className="container my-5">
-        <div className="d-flex justify-content-between align-items-center mb-3">
-          <h2 className="box-header-heading">Trending on BargainFox</h2>
-          <Link href="/trending" className="box-header-link">
-            <span>View All</span>
-            <Image
-              src="/images/svg/dark-line-arrow.svg"
-              alt="view all Trending"
-              width={16}
-              height={16}
-              className="pr-2"
-            />
-          </Link>
-        </div>
-        <DealsList pageType="deals" list={homeData.trendingDeals} />
-      </section>
-      <section className="container my-5">
-        <WeeklyDealsList list={homeData.weeklyDeals} />
-      </section>
-      <section className="container my-5">
-        <div className="d-flex justify-content-between align-items-center mb-3">
-          <h2 className="box-header-heading">Garden & DIY</h2>
-          <Link href="/products/home-decoration" className="box-header-link">
-            <span>View All</span>
-            <Image
-              src="/images/svg/dark-line-arrow.svg"
-              alt="view all Trending"
-              width={16}
-              height={16}
-              className="pr-2"
-            />
-          </Link>
-        </div>
-        <Suspense fallback={<SliderProductListSkeleton count={4} />}>
-          {/* @ts-expect-error Async Server Component */}
-          <HomeDecorationData />
-        </Suspense>
-      </section>
-      <section className="container my-5">
-        <SubscribeNewsletters />
-      </section>
-      <section className="container my-5">
-        <div className="d-flex justify-content-between align-items-center mb-3">
-          <h2 className="box-header-heading">Electronics</h2>
-          <Link href="/products/electronics" className="box-header-link">
-            <span>View All</span>
-            <Image
-              src="/images/svg/dark-line-arrow.svg"
-              alt="view all Trending"
-              width={16}
-              height={16}
-              className="pr-2"
-            />
-          </Link>
-        </div>
-        <Suspense fallback={<SliderProductListSkeleton count={4} />}>
-          {/* @ts-expect-error Async Server Component */}
-          <ElectronicsData />
-        </Suspense>
-      </section>
+      <DealsList pageType="home" list={homeData.deals} />
+      <TrendingList pageType="deals" list={homeData.trendingDeals} />
+      <WeeklyDealsList list={homeData.weeklyDeals} />
+      <Suspense fallback={<SliderProductListSkeleton count={4} />}>
+        {/* @ts-expect-error Async Server Component */}
+        <HomeDecorationData />
+      </Suspense>
+      <SubscribeNewsletters />
+      <Suspense fallback={<SliderProductListSkeleton count={4} />}>
+        {/* @ts-expect-error Async Server Component */}
+        <ElectronicsData />
+      </Suspense>
       <BlogList list={homeData.blog} />
     </div>
   );

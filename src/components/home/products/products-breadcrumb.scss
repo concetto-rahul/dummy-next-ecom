@@ -1,0 +1,14 @@
+.products-breadcrumb {
+  width: 100%;
+  background-color: #fcfcff;
+  padding: 20px 50px;
+  margin-bottom: 50px;
+  .active {
+    a {
+      color: #292d32;
+    }
+  }
+  .breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+  }
+}

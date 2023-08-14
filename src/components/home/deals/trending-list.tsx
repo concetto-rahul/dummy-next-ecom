@@ -4,8 +4,8 @@ import Image from "next/image";
 import { DealList } from "@/types/deals";
 import SliderContent from "@/components/slider-content";
 import DealsItem from "./box-item";
-import { DealTimer } from "./deal-timer";
-import "./deals-list.scss";
+import "./trending-list.scss";
+
 const settings = {
   dots: false,
   infinite: false,
@@ -45,16 +45,15 @@ type Props = {
   list: DealList;
 };
 
-export default function DealsList({ pageType = "", list = [] }: Props) {
+export default function TrendingList({ pageType = "", list = [] }: Props) {
   return (
-    <section className="container mt-5 deals-list">
+    <section className="container mt-5 trending-list">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <div className="d-flex">
-          <h2 className="box-header-heading mr-2">Deals of the Day</h2>
-          <DealTimer endDate={"2023-08-21 11:58:00"} />
+          <h2>Trending on BargainFox</h2>
         </div>
-        <Link href="/deals" className="box-header-link">
-          <span>View All Deals</span>
+        <Link href="/deals">
+          <span>View All</span>
           <Image
             src="/images/svg/dark-line-arrow.svg"
             alt="view all deals"

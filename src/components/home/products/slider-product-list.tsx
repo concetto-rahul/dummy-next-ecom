@@ -1,17 +1,11 @@
 "use client";
-
 import Image from "next/image";
-import { default as Slider, Settings, CustomArrowProps } from "react-slick";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-import "../deals/deals.list.scss";
-import ProductsItem from "./products-item";
+import Link from "next/link";
 import { ProductList } from "@/types/products";
+import SliderContent from "@/components/slider-content";
+import ProductsItem from "./products-item";
 
-const settings: Settings = {
-  className: "slider variable-width",
+const settings = {
   dots: false,
   infinite: false,
   speed: 500,
@@ -44,54 +38,36 @@ const settings: Settings = {
       },
     },
   ],
-  nextArrow: <DealsListNextArrow />,
-  prevArrow: <DealsListPrevArrow />,
 };
 type Props = {
+  title: string;
+  url: string;
   list: ProductList;
 };
 
-function DealsListNextArrow({
-  currentSlide,
-  onClick,
-  slideCount,
-}: CustomArrowProps): JSX.Element {
+export default function SliderProductList({ title, url, list = [] }: Props) {
   return (
-    <div className={"slick-arrow slick-next dealsnextarrow"} onClick={onClick}>
-      <Image
-        src={`/images/svg/${
-          currentSlide === slideCount ? "white" : "dark"
-        }-arrow.svg`}
-        width={20}
-        height={20}
-        alt="deals prev arrow"
-      />
-    </div>
-  );
-}
-
-function DealsListPrevArrow({
-  currentSlide,
-  onClick,
-}: CustomArrowProps): JSX.Element {
-  return (
-    <div className={"slick-arrow slick-prev dealsprevarrow"} onClick={onClick}>
-      <Image
-        src={`/images/svg/${currentSlide === 0 ? "white" : "dark"}-arrow.svg`}
-        width={20}
-        height={20}
-        alt="deals prev arrow"
-      />
-    </div>
-  );
-}
-
-export default function SliderProductList({ list = [] }: Props) {
-  return (
-    <Slider {...settings}>
-      {list.map((val) => (
-        <ProductsItem key={`SliderProduct${val.id}`} data={val} />
-      ))}
-    </Slider>
+    <section className="container mt-5">
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h2 className="box-header-heading">{title}</h2>
+        <Link href={url} className="box-header-link">
+          <span>View All</span>
+          <Image
+            src="/images/svg/dark-line-arrow.svg"
+            alt="view all Trending"
+            width={16}
+            height={16}
+            className="pr-2"
+          />
+        </Link>
+      </div>
+      <div>
+        <SliderContent settings={settings}>
+          {list.map((val) => (
+            <ProductsItem key={`SliderProduct${val.id}`} data={val} />
+          ))}
+        </SliderContent>
+      </div>
+    </section>
   );
 }

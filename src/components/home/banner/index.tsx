@@ -1,12 +1,6 @@
-"use client";
-
 import Image from "next/image";
-
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-import styles from "../../app/[lang]/page.module.scss";
+import SliderContent from "@/components/slider-content";
+import "./home-banner.scss";
 
 const settings = {
   dots: true,
@@ -19,33 +13,33 @@ const settings = {
 };
 export default function HomeBanner() {
   return (
-    <div>
-      <Slider {...settings}>
-        <div className={styles.image_container}>
+    <section className="mt-5 container-fluid home-banner">
+      <SliderContent settings={settings} actionButtons={false}>
+        <div className="image-container">
           <Image
             src={"/images/home-banner.jpg"}
             fill
-            className={styles.image}
+            className="image"
             alt="home banner one"
           />
         </div>
-        <div className={styles.image_container}>
+        <div className="image-container">
           <Image
             src={"/images/home-banner.jpg"}
             fill
-            className={styles.image}
+            className="image"
             alt="home banner two"
           />
         </div>
-        <div className={styles.image_container}>
+        <div className="image-container">
           <Image
             src={"/images/home-banner.jpg"}
             fill
-            className={styles.image}
+            className="image"
             alt="home banner three"
           />
         </div>
-      </Slider>
-    </div>
+      </SliderContent>
+    </section>
   );
 }

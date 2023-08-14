@@ -25,7 +25,7 @@ export default function Pagination({ total, limit }: Props) {
   };
 
   return (
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example" className="mt-5">
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"

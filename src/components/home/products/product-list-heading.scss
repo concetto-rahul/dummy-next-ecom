@@ -1,0 +1,21 @@
+.product-list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  .pages-count {
+    display: flex;
+    align-items: baseline;
+    h4 {
+      font-size: 26px;
+      line-height: 28px;
+      margin-right: 14px;
+    }
+    h6 {
+      font-size: 18px;
+      line-height: 28px;
+      color: #a4a4b8;
+      opacity: 1;
+    }
+  }
+}

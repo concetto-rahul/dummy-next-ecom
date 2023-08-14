@@ -1,0 +1,59 @@
+.product-detail-images {
+  .images-list {
+    margin: 0 auto;
+    .image {
+      object-fit: contain;
+      width: 80% !important;
+      position: relative !important;
+      height: unset !important;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
+  .image-detail {
+    background-color: #f2f2f8;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    .image {
+      object-fit: contain;
+      width: 70% !important;
+      position: relative !important;
+      height: unset !important;
+      margin: auto;
+    }
+
+    .deal-label {
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+      background: #292d32;
+      border-radius: 0px 9px 0px 0px;
+      z-index: 1;
+      padding: 6px 10px;
+
+      text-align: left;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: normal;
+      letter-spacing: 0px;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+    .wishlist-div {
+      position: absolute;
+      top: 2%;
+      right: 2%;
+      // padding: 10px;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background-color: #ffffff;
+      box-shadow: 0px 3px 6px #a4a4b84d;
+    }
+  }
+}

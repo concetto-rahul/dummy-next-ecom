@@ -1,5 +1,6 @@
 import ProductFilters from "@/components/home/products/product-filters";
-import ProductShortBy from "@/components/home/products/product-short-by";
+import ProductListHeading from "@/components/home/products/product-list-heading";
+import ProductsBreadcrumb from "@/components/home/products/products-breadcrumb";
 import ProductsItem from "@/components/home/products/products-item";
 import Pagination from "@/components/pagination";
 import { getDictionary } from "@/dictionaries";
@@ -35,37 +36,53 @@ export default async function Collections({
   const dictionary = await getDictionary(lang);
   const products = await fetchProductList(collection_slug, limit, pageNumber);
 
+  const breadcrumbList = [
+    {
+      title: "Home",
+      slug: "/",
+    },
+    {
+      title: "Home Decoration",
+      slug: "/home-decoration",
+    },
+    {
+      title: "Western Wear",
+      slug: "/western-wear",
+    },
+  ];
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-4">
-          <ProductFilters />
-        </div>
-        <div className="col-8">
-          <div className="row">
-            {products.total > 0 ? (
-              <>
-                <div className="d-flex justify-content-between mb-4">
-                  <h6>
-                    Results 1-5 of over {products?.total || 0} {collection_slug}{" "}
-                    {pageNumber}
-                  </h6>
-                  <ProductShortBy />
+      <ProductsBreadcrumb list={breadcrumbList} />
+      <div className="row mb-5">
+        {products.total > 0 ? (
+          <>
+            <div className="col-3">
+              <ProductFilters />
+            </div>
+            <div className="col-9">
+              <div className="row">
+                <div className="col-12">
+                  <ProductListHeading
+                    limit={limit}
+                    currentPage={pageNumber}
+                    total={products.total}
+                  />
                 </div>
+
                 {products.products.map((val: Product) => (
                   <div key={`dealp-${val.id}`} className="col-md-3">
                     <ProductsItem data={val} />
                   </div>
                 ))}
                 <Pagination total={products.total} limit={limit} />
-              </>
-            ) : (
-              <div className="col-12">
-                <p>No product list</p>
               </div>
-            )}
+            </div>
+          </>
+        ) : (
+          <div className="col-12">
+            <p>No product list</p>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

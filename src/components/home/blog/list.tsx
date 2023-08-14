@@ -1,18 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { default as Slider, Settings, CustomArrowProps } from "react-slick";
-import { BlogList } from "@/types/blog";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-import "../deals/deals.list.scss";
-import "./blog-list.scss";
 import Link from "next/link";
+import { BlogList } from "@/types/blog";
+import SliderContent from "@/components/slider-content";
+import "./blog-list.scss";
 
-const settings: Settings = {
-  className: "slider variable-width",
+const settings = {
   dots: false,
   infinite: false,
   speed: 500,
@@ -45,44 +39,7 @@ const settings: Settings = {
       },
     },
   ],
-  nextArrow: <DealsListNextArrow />,
-  prevArrow: <DealsListPrevArrow />,
 };
-
-function DealsListNextArrow({
-  currentSlide,
-  onClick,
-  slideCount,
-}: CustomArrowProps): JSX.Element {
-  return (
-    <div className={"slick-arrow slick-next dealsnextarrow"} onClick={onClick}>
-      <Image
-        src={`/images/svg/${
-          currentSlide === slideCount ? "white" : "dark"
-        }-arrow.svg`}
-        width={20}
-        height={20}
-        alt="deals prev arrow"
-      />
-    </div>
-  );
-}
-
-function DealsListPrevArrow({
-  currentSlide,
-  onClick,
-}: CustomArrowProps): JSX.Element {
-  return (
-    <div className={"slick-arrow slick-prev dealsprevarrow"} onClick={onClick}>
-      <Image
-        src={`/images/svg/${currentSlide === 0 ? "white" : "dark"}-arrow.svg`}
-        width={20}
-        height={20}
-        alt="deals prev arrow"
-      />
-    </div>
-  );
-}
 
 type Props = {
   list: BlogList;
@@ -90,12 +47,12 @@ type Props = {
 
 export default function BlogList({ list }: Props) {
   return (
-    <section className="my-5 blog-section">
+    <section className="mt-5 blog-section">
       <div className="container">
         <h2>Blogs</h2>
         <p>Feeling nosey? Check out what we&apos;ve been up to in the den.</p>
         <div className="blog-list">
-          <Slider {...settings}>
+          <SliderContent settings={settings}>
             {list.map((val) => (
               <div key={`BlogItem${val.id}`} className="blog-list-item">
                 <Image
@@ -125,7 +82,7 @@ export default function BlogList({ list }: Props) {
                 </div>
               </div>
             ))}
-          </Slider>
+          </SliderContent>
         </div>
       </div>
     </section>
