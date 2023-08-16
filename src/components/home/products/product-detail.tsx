@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import "./product-detail.scss";
+import ProductSharingOptions from "./product-sharing-options";
 
 type Props = {
   data: any;
@@ -9,7 +10,23 @@ export default function ProductDetail({ data }: Props) {
   const ratingRound = data.rating ? Math.round(data.rating) : 0;
   return (
     <div className="product-detail">
-      <h1>{data.title}</h1>
+      <div className="heading">
+        <h1>{data.title}</h1>
+        <div className="share-box">
+          <Image
+            src="/images/svg/share.svg"
+            width={20}
+            height={20}
+            alt="share"
+          />
+        </div>
+        <div className="sharing-options">
+          <ProductSharingOptions
+            url="http://localhost:3000/en/collections/mens-shoes/products/56"
+            title={data.title}
+          />
+        </div>
+      </div>
       <div className="seller-box">
         <div className="rating">
           <Image

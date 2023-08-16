@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import ProductFilters from "@/components/home/products/product-filters";
 import ProductListHeading from "@/components/home/products/product-list-heading";
 import ProductsBreadcrumb from "@/components/home/products/products-breadcrumb";
@@ -23,9 +24,26 @@ const fetchProductList = async (
       cache: "no-store",
     }
   );
+  if (!data.ok) {
+    throw new Error(`Failed to fetch collection ${category} product data`);
+  }
   const res = (await data).json();
   return res;
 };
+
+export async function generateMetadata({
+  params: { collection_slug },
+}: Props): Promise<Metadata> {
+  // const collectionData = await fetch(`https://.../${collection_slug}`).then((res) => res.json())
+  return {
+    title: `${collection_slug} - BargainFox.com`,
+    description: `${collection_slug} Buy bargains online with big discounts! Deals on Home, Kitchen, Electronics, Health & Beauty and Toys. Free delivery on orders over £50. BIG on Service - BIG on Savings.`,
+    openGraph: {
+      title: collection_slug,
+      description: `${collection_slug} Buy bargains online with big discounts! Deals on Home, Kitchen, Electronics, Health & Beauty and Toys. Free delivery on orders over £50. BIG on Service - BIG on Savings.`,
+    },
+  };
+}
 
 export default async function Collections({
   params: { lang, collection_slug },

@@ -1,5 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
 import { Suspense } from "react";
 import { getDictionary } from "@/dictionaries";
 import { Locale } from "@/i18n-config";
@@ -8,10 +6,10 @@ import HomeBanner from "@/components/home/banner";
 import DealsList from "@/components/home/deals/list";
 import TrendingList from "@/components/home/deals/trending-list";
 import WeeklyDealsList from "@/components/home/deals/weekly-deals-list";
-import SliderProductList from "@/components/home/products/slider-product-list";
-import SliderProductListSkeleton from "@/components/home/products/slider-product-list-skeleton";
 import SubscribeNewsletters from "@/components/home/subscribe-newsletters";
 import BlogList from "@/components/home/blog/list";
+import SliderProductList from "@/components/home/products/slider-product-list";
+import SliderProductListSkeleton from "@/components/home/products/slider-product-list-skeleton";
 
 type Props = {
   params: { lang: Locale };
@@ -191,8 +189,9 @@ const fetchProductList = async (category: string) => {
       cache: "no-store",
     }
   );
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
-
+  if (!data.ok) {
+    throw new Error(`Failed to fetch home ${category} product data`);
+  }
   const res = (await data).json();
   return res;
 };
@@ -200,27 +199,32 @@ const fetchProductList = async (category: string) => {
 async function HomeDecorationData() {
   const homeDecorationData = await fetchProductList("furniture");
   return (
-    <SliderProductList
-      title="Garden & DIY"
-      url="/collections/home-decoration"
-      list={homeDecorationData?.products || []}
-    />
+    <>
+      <SliderProductList
+        title="Garden & DIY"
+        url="/collections/home-decoration"
+        list={homeDecorationData?.products || []}
+      />
+    </>
   );
 }
 
 async function ElectronicsData() {
   const electronicsData = await fetchProductList("smartphones");
   return (
-    <SliderProductList
-      title="Electronics"
-      url="/collections/electronics"
-      list={electronicsData?.products || []}
-    />
+    <>
+      <SliderProductList
+        title="Electronics"
+        url="/collections/electronics"
+        list={electronicsData?.products || []}
+      />
+    </>
   );
 }
 
 export default async function Home({ params: { lang } }: Props) {
   const dictionary = await getDictionary(lang);
+  const data = await fetchProductList("furniture");
   // console.log({ dictionary });
   return (
     <div>

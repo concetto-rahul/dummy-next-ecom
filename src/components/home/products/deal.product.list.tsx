@@ -33,7 +33,6 @@ const fetchProductList = async (pageNumber: number) => {
 export default function DealProductList({ title, list }: Props) {
   const [productsList, setProductsList] = useState(list.products);
   const [loadCount, setLoadCount] = useState(1);
-  console.log({ loadCount, productsList });
   return (
     <section className="my-5 container">
       <h2>{title}</h2>
@@ -51,7 +50,6 @@ export default function DealProductList({ title, list }: Props) {
                   const newProducts: fetchResponseData = await fetchProductList(
                     loadCount + 1
                   );
-                  console.log("newProducts", loadCount + 1, newProducts);
                   setProductsList([...productsList, ...newProducts.products]);
                   setLoadCount(loadCount + 1);
                 }}

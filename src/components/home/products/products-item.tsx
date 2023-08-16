@@ -54,7 +54,7 @@ export default function ProductsItem({
           />
           <Image
             src={`/images/svg/${ratingRound >= 5 ? "dark" : "light"}-star.svg`}
-            alt={"rating star 1"}
+            alt={"rating star 5"}
             width="20"
             height="20"
           />

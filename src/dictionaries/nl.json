@@ -1,5 +1,9 @@
 {
+  "Deals of the Day": "Deals of the Day",
   "products": {
     "cart": "Toevoegen aan Winkelwagen"
+  },
+  "deals": {
+    "heading": "Deals of the Day"
   }
 }

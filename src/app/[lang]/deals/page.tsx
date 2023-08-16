@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getDictionary } from "@/dictionaries";
 import { Locale } from "@/i18n-config";
 import DealTopSection from "@/components/home/deals/deal-top-section";
@@ -64,6 +65,17 @@ const homeData = {
       image: "/images/WHTSTRK.png",
     },
   ],
+};
+
+export const metadata: Metadata = {
+  title: "Deals of the Week! - BargainFox.com",
+  description:
+    "Buy bargains online with big discounts! Deals on Home, Kitchen, Electronics, Health & Beauty and Toys. Free delivery on orders over £50. BIG on Service - BIG on Savings.",
+  openGraph: {
+    title: "Deals of the Week! - BargainFox.com",
+    description:
+      "Buy bargains online with big discounts! Deals on Home, Kitchen, Electronics, Health & Beauty and Toys. Free delivery on orders over £50. BIG on Service - BIG on Savings.",
+  },
 };
 
 const fetchProductList = async (pageNumber: number) => {
