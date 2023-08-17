@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30.829" height="30.829" viewBox="0 0 30.829 30.829">
+  <g id="add-shopping-cart" transform="translate(-622 -188)">
+    <path id="Vector" d="M0,0H2.347A2.5,2.5,0,0,1,4.829,2.7L3.71,16.134a3.771,3.771,0,0,0,3.764,4.087H21.84A3.881,3.881,0,0,0,25.631,16.7l.728-10.117a3.741,3.741,0,0,0-3.791-4.06H5.153" transform="translate(623.939 189.915)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Vector-2" data-name="Vector" d="M4.227,2.113A2.113,2.113,0,1,1,2.113,0,2.113,2.113,0,0,1,4.227,2.113Z" transform="translate(640.466 213.095)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Vector-3" data-name="Vector" d="M4.227,2.113A2.113,2.113,0,1,1,2.113,0,2.113,2.113,0,0,1,4.227,2.113Z" transform="translate(630.84 213.095)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Vector-4" data-name="Vector" d="M0,0H7.293" transform="translate(635.067 201.008)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Vector-5" data-name="Vector" d="M0,0H7.293" transform="translate(638.714 197.361) rotate(90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Vector-6" data-name="Vector" d="M0,0H30.829V30.829H0Z" transform="translate(622 188)" fill="none" opacity="0"/>
+  </g>
+</svg>

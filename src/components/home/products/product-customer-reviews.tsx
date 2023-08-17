@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import AddProductReview from "./add-product-review";
 import "./product-customer-reviews.scss";
 
 type Props = {
@@ -14,9 +15,11 @@ type Reviews = {
   date: string;
   review: string;
   image: string;
+  photos: string[];
 };
 export default function ProductCustomerReviews({ data }: Props) {
   const [selectedStar, setSelectedStar] = useState(0);
+  const [showReviewForm, setShowReviewForm] = useState(false);
   const ratingRound = data.rating ? Math.round(data.rating) : 0;
   const totalRating = 14517;
   const starCount_5 = 5231;
@@ -36,6 +39,7 @@ export default function ProductCustomerReviews({ data }: Props) {
       rating: 3,
       date: "2023-08-21",
       image: "/images/user-review.png",
+      photos: [...data?.images],
       review:
         "i think it's overpriced if it is really almost $1000. This was supposed to be a successor to iPhone SE in the $500 to $600 range. It doesn't even have 5G connectivity. The cameras as so basic. The display is nothing to rave about. Surely it can't be that expensive?",
     },
@@ -45,6 +49,7 @@ export default function ProductCustomerReviews({ data }: Props) {
       rating: 2,
       date: "2023-08-29",
       image: "/images/user-review.png",
+      photos: [],
       review: "Lol 720p screen.\n2000 msg battery\nPure Junk",
     },
     {
@@ -53,6 +58,7 @@ export default function ProductCustomerReviews({ data }: Props) {
       rating: 5,
       date: "2023-09-14",
       image: "/images/user-review.png",
+      photos: [...data?.images],
       review: "399 for this junk NO",
     },
   ];
@@ -239,7 +245,14 @@ export default function ProductCustomerReviews({ data }: Props) {
             onClick={() => setSelectedStar(5)}
           />
         </div>
-        <p>Rate This Product</p>
+        <p onClick={() => setShowReviewForm(true)}>Rate This Product</p>
+        <AddProductReview
+          show={showReviewForm}
+          handleClose={() => setShowReviewForm(false)}
+          image={data.images[0] || ""}
+          title={data?.title || ""}
+          productId={data?.id || ""}
+        />
       </div>
       <div className="col-12 customer-photos">
         <h5>
@@ -277,6 +290,23 @@ export default function ProductCustomerReviews({ data }: Props) {
                   <h4>{val.name}</h4>
                 </div>
                 <p>{val.review}</p>
+                <div className="photos-list">
+                  {val.photos &&
+                    val.photos.map((val: string, index: number) => (
+                      <div
+                        key={`customer-photo-${index}`}
+                        className="image-box"
+                      >
+                        <Image
+                          src={val}
+                          fill
+                          className="image"
+                          alt={`Customer Photos ${index}`}
+                          priority
+                        />
+                      </div>
+                    ))}
+                </div>
                 <div className="rating-box">
                   <div className="rating">
                     <Image

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.4.0",
+    "@hookform/resolvers": "^3.2.0",
     "@types/node": "20.4.8",
     "@types/react": "18.2.19",
     "@types/react-dom": "18.2.7",
@@ -22,12 +23,14 @@
     "react": "18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.45.4",
     "react-paginate": "^8.2.0",
     "react-slick": "^0.29.0",
     "sass": "^1.64.2",
     "sharp": "^0.32.4",
     "slick-carousel": "^1.8.1",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/negotiator": "^0.6.1",

@@ -164,6 +164,26 @@
           }
         }
       }
+      .photos-list {
+        display: inline-block;
+        .image-box {
+          width: 60px;
+          height: 60px;
+          border-radius: 10px;
+          display: inline-block;
+          margin: 10px 10px 10px 0;
+          background-color: #f2f2f8;
+          cursor: pointer;
+          .image {
+            object-fit: contain;
+            width: 100% !important;
+            position: relative !important;
+            height: unset !important;
+            margin: auto;
+            border-radius: 10px;
+          }
+        }
+      }
     }
   }
 }

@@ -10,8 +10,9 @@ import Image from "next/image";
 type Props = {
   url: string;
   title: string;
+  images: string[];
 };
-export default function ProductSharingOptions({ url, title }: Props) {
+export default function ProductSharingOptions({ url, title, images }: Props) {
   return (
     <ul>
       <li>
@@ -39,7 +40,11 @@ export default function ProductSharingOptions({ url, title }: Props) {
         </TwitterShareButton>
       </li>
       <li>
-        <PinterestShareButton url={url} media={title}>
+        <PinterestShareButton
+          url={url}
+          media={images[0] || ""}
+          description={title}
+        >
           <div>
             <Image
               src="/images/svg/pinterest.svg"

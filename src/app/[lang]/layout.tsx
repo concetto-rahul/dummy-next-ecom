@@ -350,10 +350,10 @@ export default function RootLayout({
                       <h4>About Us</h4>
                       <ul>
                         <li>
-                          <Link href="#">About Us</Link>
+                          <Link href="/our-story">About Us</Link>
                         </li>
                         <li>
-                          <Link href="#">Our Blog</Link>
+                          <Link href="/blog">Our Blog</Link>
                         </li>
                       </ul>
                     </div>
